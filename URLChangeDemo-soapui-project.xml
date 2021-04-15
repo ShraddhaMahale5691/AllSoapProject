@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="cf69e8d1-51e3-4954-9070-58cb3513cc49" activeEnvironment="Default" name="URLChangeDemo" resourceRoot="" soapui-version="5.6.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="ee6cb69e-047e-464e-89ad-23f8e66634d9" wsaVersion="NONE" name="blzServiceSoapBinding" type="wsdl" bindingName="{http://www.springframework.org/schema/beans}blzServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8282/services/blzService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8282/services/blzService?wsdl"><con:part><con:url>http://localhost:8282/services/blzService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="blzService" targetNamespace="http://www.springframework.org/schema/beans" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.springframework.org/schema/beans" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://thomas-bayer.com/blz/">
+  <wsdl:import location="http://localhost:8282/services/blzService?wsdl=BLZServicePortType.wsdl" namespace="http://thomas-bayer.com/blz/"></wsdl:import>
+  <wsdl:binding name="blzServiceSoapBinding" type="ns1:BLZServicePortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBank">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBank">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBankResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="blzService">
+    <wsdl:port binding="tns:blzServiceSoapBinding" name="$Proxy87Port">
+      <soap:address location="http://localhost:8282/services/blzService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8282/services/blzService?wsdl=BLZServicePortType.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="BLZServicePortType" targetNamespace="http://thomas-bayer.com/blz/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://thomas-bayer.com/blz/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://thomas-bayer.com/blz/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://thomas-bayer.com/blz/">
+      <xs:element name="getBank" type="tns:getBankType"/>
+      <xs:element name="getBankResponse" type="tns:getBankResponseType"/>
+      <xs:complexType name="getBankType">
+        <xs:sequence>
+          <xs:element name="blz" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getBankResponseType">
+        <xs:sequence>
+          <xs:element name="details" type="tns:detailsType"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="detailsType">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="bezeichnung" type="xs:string"/>
+          <xs:element minOccurs="0" name="bic" type="xs:string"/>
+          <xs:element minOccurs="0" name="ort" type="xs:string"/>
+          <xs:element minOccurs="0" name="plz" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getBank">
+    <wsdl:part element="ns1:getBank" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBankResponse">
+    <wsdl:part element="ns1:getBankResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="BLZServicePortType">
+    <wsdl:operation name="getBank">
+      <wsdl:input message="ns1:getBank" name="getBank"></wsdl:input>
+      <wsdl:output message="ns1:getBankResponse" name="getBankResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://Shraddha-TY:5858/localMock</con:endpoint><con:endpoint>http://localhost:8282/services/blzService</con:endpoint></con:endpoints><con:operation id="983e595b-46d3-4e94-a23a-9dd21a5e5ecb" isOneWay="false" action="" name="getBank" bindingOperationName="getBank" type="Request-Response" outputName="getBankResponse" inputName="getBank" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4393aa27-81dd-4ab7-b1d5-1df454f3cba0" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://Shraddha-TY:5858/localMock</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <blz:getBank>\r
+         <blz:blz>55010111</blz:blz>\r
+      </blz:getBank>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.springframework.org/schema/beans/BLZServicePortType/getBank"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="1c531969-e328-48a5-a10b-0a659ab75b5e" name="SuiteToSetURLFromPropertyFile"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="b101df6e-07bf-49b6-a502-7d5e9cb86075" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="URLChangeTestcase" searchProperties="true"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.panels.testcase.JTestRunLog$OptionsForm@max_rows">1000</con:setting><con:setting id="com.eviware.soapui.impl.wsdl.panels.testcase.JTestRunLog$OptionsForm@errors_only">false</con:setting></con:settings><con:setupScript>String env=context.expand('${#Project#env}')
+log.info env
+//String filepath=new File("D:\\AllMyProjectSoap\\"+env+".properties")
+//log.info filepath
+Properties prop=new Properties()
+File configFile=new File("D:\\AllMyProjectSoap\\Deva.properties")
+
+configFile.withInputStream{
+	line->
+	prop.load(line)
+}
+log.info prop['url']
+testSuite.project.setPropertyValue('URL',prop['url'])</con:setupScript><con:properties/></con:testCase><con:properties/><con:setupScript>String env=context.expand('${#Project#env}')
+log.info env
+String filepath=new File("D:\\AllMyProjectSoap\\"+env+".properties")
+//log.info filepath
+Properties prop=new Properties()
+File configFile=new File(filepath)
+
+configFile.withInputStream{
+	line->
+	prop.load(line)
+}
+log.info prop['url']
+testSuite.project.setPropertyValue('URL',prop['url'])</con:setupScript></con:testSuite><con:mockService id="3f476a44-959d-42d4-bd03-31bf0acb42f8" port="5858" path="/localMock" host="Shraddha-TY" name="MyMock" bindToHostOnly="false" docroot=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:properties/><con:mockOperation name="getBank" id="11d65da6-405d-4551-a175-01d7d9d30c58" interface="blzServiceSoapBinding" operation="getBank"><con:settings/><con:defaultResponse>Response 1</con:defaultResponse><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:response name="Response 1" id="10a85579-f153-44e7-b509-5faa7d4c55bd" httpResponseStatus="200" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:blz="http://thomas-bayer.com/blz/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <blz:getBankResponse>
+         <blz:details>
+            <!--Optional:-->
+            <blz:bezeichnung>111</blz:bezeichnung>
+            <!--Optional:-->
+            <blz:bic>222</blz:bic>
+            <!--Optional:-->
+            <blz:ort>333</blz:ort>
+            <!--Optional:-->
+            <blz:plz>444</blz:plz>
+         </blz:details>
+      </blz:getBankResponse>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://www.springframework.org/schema/beans/BLZServicePortType/getBankResponse"/></con:response><con:dispatchConfig/></con:mockOperation></con:mockService><con:properties><con:property><con:name>env</con:name><con:value>prod1</con:value></con:property><con:property><con:name>URL</con:name><con:value>http://localhost:8282/services/blzService</con:value></con:property></con:properties><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

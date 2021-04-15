@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="ecba42f1-81a7-494f-aae4-18ad82e11d65" activeEnvironment="Default" name="VIMP_ExcelDatabaseText" resourceRoot="" soapui-version="5.6.0" abortOnError="false" runType="SEQUENTIAL" encryptionMode="Not encrypted" updated="3.7.0 2021-03-30T19:14:40Z" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:testSuite id="f2e76a28-811c-49ee-b032-568a5cbc224d" name="TestSuite 1"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="ec074f30-7acc-4ff9-b9ac-763f66a57fed" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="TestCase 1" searchProperties="true"><con:settings/><con:testStep type="groovy" name="Databasedata" id="0441d98c-66ba-48ed-a79c-5dc97b17cf60"><con:settings/><con:config><script>import java.sql.*; 
+import groovy.sql.Sql 
+
+String sqlstmt='Select * from Employeeinfo'
+def databaseurl='jdbc:mysql://localhost:3306/Employeeportal?user=root&amp;password=root'
+def username='root'
+def password='root'
+def drivername='com.mysql.jdbc.Driver'
+def sql=Sql.newInstance(databaseurl,username,password,drivername)
+def name1,id1,dept1,age1
+sql.eachRow(sqlstmt)
+{
+	row->
+	name1=row['name']
+	id1=row['id']
+	dept1=row['dept']
+	age1=row['age']
+	log.info "name=$name1,id=$id1,dept=$dept1,age=$age1"
+	
+}
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="Exceldata" id="914d342d-0224-4fb2-85ef-7b50c9d9de38"><con:settings/><con:config><script>import jxl.*;
+File file1=new File("D:\\SOAPProjects\\Test1.xls");
+Workbook wb=Workbook.getWorkbook(file1);
+Sheet sheet1=wb.getSheet(0);
+int row=sheet1.getRows()-1;
+for(int i in 1 .. row)
+{
+	log.info sheet1.getCell(0,i).getContents();
+	log.info sheet1.getCell(1,i).getContents();
+}
+wb.close();
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="TextFile" id="7b24a511-aace-4bea-a482-929a0acde0cb"><con:settings/><con:config><script>File file1=new File("D:\\SOAPProjects\\Test2.txt");
+def name,id,dept,age;
+file1.eachLine{
+	line->
+	
+	linedata=line.split(',');
+	name= linedata[0]
+	id= linedata[1]
+     dept= linedata[2]
+	age=linedata[3]
+
+	log.info "name=$name,id=$id,dept=$dept,age=$age"
+}
+</script></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:properties/><con:wssContainer/><con:databaseConnectionContainer/><con:jmsConnectionContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:reporting><con:xmlTemplates/><con:parameters/></con:reporting><con:sensitiveInformation/><con:authRepository/><con:tags/></con:soapui-project>
